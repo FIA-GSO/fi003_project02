@@ -24,6 +24,18 @@ public class GenerallController {
         classList.add("FI001");
         classList.add("FI002");
         classList.add("FI003");
+        classList.add("FI001");
+        classList.add("FI002");
+        classList.add("FI003");
+        classList.add("FI001");
+        classList.add("FI002");
+        classList.add("FI003");
+        classList.add("FI001");
+        classList.add("FI002");
+        classList.add("FI003");
+        classList.add("FI001");
+        classList.add("FI002");
+        classList.add("FI003");
         model.addAttribute("list", classList);
         return "class_select";
     }
