@@ -15,4 +15,9 @@ public class GenerallController {
         return "login";
     }
 
+    @GetMapping("/class")
+    public String getClassOverview(Model model) {
+        model.addAttribute("pageTitle"," Klassenübersicht - Application");
+        return "class_select";
+    }
 }
