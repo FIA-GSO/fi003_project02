@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="components/header::header"></head>
+<head th:replace="components/header::header">
+</head>
 <body>
-    <h1>Test test</h1>
+    <div id="containerLogin">
+        <div class="card position-absolute top-50 start-50 translate-middle" style="max-width: 600px; margin-top: 2em;">
+            <img src="https://www.gso-koeln.de/wp-content/uploads/2020/06/cropped-LOGO-GSO_neu.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Benutzername" aria-label="Benutzername" aria-describedby="basic-addon1" id="inputUsername">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Passwort" aria-label="Passwort" id="inputPassword">
+                </div>
+                <div class="d-grid gap-2">
+                    <a href="#" class="card-link">Passwort vergessen?</a><br><br>
+                    <a class="btn btn-primary" id="loginBtn">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <section id="scripts" th:replace="components/scripts::scripts"></section>
+<script src="/js/login.js"></script>
 </html>

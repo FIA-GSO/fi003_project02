@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="components/header::header">
+</head>
+<body>
+    <div id="containerClassSelect">
+        <h1 style="text-align: center;">Klassenübersicht</h1>
+        <h2 style="text-align: center;">Bitte wählen Sie eine Klasse aus</h2>
+        <div class="row">
+          <div class="col-sm" th:each="class : ${list}">
+            <a th:href="@{/class/{id}(id=${class})}">
+              <div class="card">
+                <div class="card-body">
+                    <h1 th:text="${class}"></h1>
+                </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+</body>
+<section id="scripts" th:replace="components/scripts::scripts"></section>
+</html>
