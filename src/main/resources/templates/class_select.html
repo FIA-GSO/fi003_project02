@@ -3,10 +3,10 @@
 <head th:replace="components/header::header">
 </head>
 <body>
-    <div class="container">
+    <div id="containerClassSelect">
         <div class="row">
           <div class="col-sm">
-            <div th:each="class : ${list}" class="card">
+            <div th:each="class : ${list}" class="card" style="width: min-content;">
                 <div class="card-body">
                     <h1 th:text="${class}"></h1>
                 </div>
