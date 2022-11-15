@@ -9,12 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
 import de.fi003.osp.repository.TeacherRepository;
+import de.fi003.osp.utils.Helper;
 
 @Controller
 @RequestMapping("")
@@ -29,12 +26,7 @@ public class GenerallController {
     @GetMapping("")
     public String main(Model model) {
         model.addAttribute("pageTitle"," - Application");
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
-        if(!user.isPresent()){
-            return "redirect:/login";
-        }
-        return "redirect:/class";
+        return Helper.checkLogin(teacherRepository, "redirect:/class");
     }
 
     @GetMapping("/class")
@@ -43,7 +35,7 @@ public class GenerallController {
         ArrayList<de.fi003.osp.entity.Class> classList = classRepository.findAll();
     
         model.addAttribute("list", classList);
-        return "class_select";
+        return Helper.checkLogin(teacherRepository, "class_select");
     }
 
     @GetMapping("/{className}/grades")
@@ -54,6 +46,17 @@ public class GenerallController {
             return "404";
         }
         model.addAttribute("class", optClass);
-        return "grade_entries";
+        return Helper.checkLogin(teacherRepository, "grade_entries");
+    }
+
+    @GetMapping("/{className}/weekly")
+    public String getClassWekly(Model model, @PathVariable String className){
+        model.addAttribute("pageTitle"," Notenübersicht - Application");
+        Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
+        if(!optClass.isPresent()){
+            return "404";
+        }
+        model.addAttribute("class", optClass);
+        return Helper.checkLogin(teacherRepository, "calender_weekly_entries");
     }
 }
