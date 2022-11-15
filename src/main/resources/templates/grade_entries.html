@@ -26,7 +26,7 @@
             <thead>
                 <tr>
                     <th data-field="class_id" data-checkbox="false" >#</th>
-                    <th data-field="class_name" data-formatter="">Klasse #</th>
+                    <th data-field="class_name" data-formatter="">Klasse</th>
                     <th data-field="class_teacher_id\teacher_name" data-formatter="">Klassenlehrer</th>
                     <th data-field="course_name"  data-sortable="true">Fach</th>
                     <th data-field="class_start_date"  data-sortable="true">Datum von</th>
@@ -34,12 +34,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="col-xs-3"><a style="text-decoration: none;"></a>FI003</td>
-                    <td class="col-xs-3">43</td>
-                    <td class="col-xs-6">School Teacher</td>
-                    <td class="col-xs-6">$43,000</td>
-                    <td class="col-xs-6">$43,000</td>
+                <tr th:each="cours : ${courses}">
+                    <td class="col-xs-3"><a style="text-decoration: none;" th:text="${cours.id}"></a></td>
+                    <td class="col-xs-3" th:text="${class.name}"></td>
+                    <td class="col-xs-6" th:text="${cours.teacherId}"></td>
+                    <td class="col-xs-6" th:text="${cours.startDatetime}"></td>
+                    <td class="col-xs-6" th:text="${cours.endDatetime}"></td>
                 </tr>
             </tbody>
         </table>
