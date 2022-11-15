@@ -67,7 +67,7 @@ public class TeacherController {
     public String login(HttpServletRequest request, @RequestBody Teacher user) {
         Optional<Teacher> userOptional = teacherRepository.findUserByEmail(user.getEmail());
         if(!userOptional.isPresent()){
-            return "redirect:/user/login";
+            return "redirect:/login";
         }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

@@ -9,8 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
+import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
+import de.fi003.osp.repository.TeacherRepository;
 
 @Controller
 @RequestMapping("")
@@ -19,17 +23,25 @@ public class GenerallController {
     @Autowired
     private ClassRepository classRepository;
 
+    @Autowired
+    private TeacherRepository teacherRepository;
+
     @GetMapping("")
     public String main(Model model) {
         model.addAttribute("pageTitle"," - Application");
-        return "login";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
+        if(!user.isPresent()){
+            return "redirect:/login";
+        }
+        return "redirect:/class";
     }
 
     @GetMapping("/class")
     public String getClassOverview(Model model) {
         model.addAttribute("pageTitle"," Klassenübersicht - Application");
         ArrayList<de.fi003.osp.entity.Class> classList = classRepository.findAll();
-
+    
         model.addAttribute("list", classList);
         return "class_select";
     }

@@ -8,10 +8,10 @@
         <h2 style="text-align: center;">Bitte wählen Sie eine Klasse aus</h2>
         <div class="row" id="rowClass">
           <div class="col-sm" th:each="class : ${list}">
-            <a th:href="@{/class/{id}(id=${class})}" style="text-decoration: none;">
+            <a th:href="@{/{id}/grades(id=${class.name})}" style="text-decoration: none;">
                 <div class="card bg-light border" id="cardClass">
                     <div class="card-body">
-                        <h1 th:text="${class}"></h1>
+                        <h1 th:text="${class.name}"></h1>
                     </div>
                 </div>
             </a>

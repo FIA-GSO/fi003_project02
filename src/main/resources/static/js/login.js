@@ -3,7 +3,7 @@ $(document).ready(function() {
         var host = '';
         var email = $( "#inputUsername" ).val();
         var password = $( "#inputPassword" ).val();
-        axios.post(host + '/user/login', {
+        axios.post(host + '/teacher/login', {
             "email": email,
             "password": password
         })
