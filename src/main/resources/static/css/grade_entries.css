@@ -1,0 +1,4 @@
+#gradeEntryTable tbody tr.highlight td {
+    background-color: #ddd;
+    margin-top: 2em;
+}
