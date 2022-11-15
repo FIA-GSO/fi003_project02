@@ -4,6 +4,11 @@
 </head>
 <body>
     <div class="container">
+        <div class="card bg-light border" id="cardGrade">
+            <div class="card-body">
+                <p th:text="${class.name}"></p>
+            </div>
+        </div>
         <table 
             id="gradeEntryTable"
             class="table table-fixed table-condensed"
@@ -18,7 +23,7 @@
             data-id-field="class_id"
             data-page-list="[10, 25, 50, 100, ALL]"
             data-show-footer="false">
-            <thead>
+            <thead class="table-light">
                 <tr>
                     <th data-field="class_id" data-checkbox="false" >#</th>
                     <th data-field="class_name" data-formatter="">Klasse</th>
@@ -29,19 +34,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="clickableRow">
-                    <td class="col-xs-3">John</td>
+                <tr>
+                    <td class="col-xs-3"><a th:href="@{/{id}/grades(id=${class.name})}" style="text-decoration: none;"></a>FI003</td>
                     <td class="col-xs-3">43</td>
                     <td class="col-xs-6">School Teacher</td>
                     <td class="col-xs-6">$43,000</td>
                     <td class="col-xs-6">$43,000</td>
-                </tr>
-                <tr class="clickableRow">
-                    <td class="col-xs-3">Tim</td>
-                    <td class="col-xs-3">52</td>
-                    <td class="col-xs-6">Plumber</td>
-                    <td class="col-xs-6">$55,000</td>
-                    <td class="col-xs-6">$55,000</td>
                 </tr>
             </tbody>
         </table>
