@@ -61,4 +61,8 @@ public class Teacher {
     public void setPhone(String phone){
         this.phone = phone;
     }
+
+    public Teacher orElseThrow(Object object) {
+        return null;
+    }
 }
