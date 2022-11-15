@@ -6,7 +6,7 @@
     <div class="container">
         <h1 style="text-align: left; margin-top: 2em;">Notenübersicht</h1>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary" type="button">Wochenkalender</button>
+            <a th:href="@{/{id}/weekly(id=${class.name})}" class="btn btn-primary" type="button">Wochenkalender</a>
         </div>
         <button class="btn btn-primary" type="button">Filter</button>
         <table 
@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="col-xs-3"><a th:href="@{/{id}/grades(id=${class.name})}" style="text-decoration: none;"></a>FI003</td>
+                    <td class="col-xs-3"><a style="text-decoration: none;"></a>FI003</td>
                     <td class="col-xs-3">43</td>
                     <td class="col-xs-6">School Teacher</td>
                     <td class="col-xs-6">$43,000</td>

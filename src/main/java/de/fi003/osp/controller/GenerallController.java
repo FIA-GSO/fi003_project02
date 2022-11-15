@@ -57,7 +57,7 @@ public class GenerallController {
         Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
         ArrayList<Course> courseList = courseRepository.findAllByTeacherId(user.get().getId());
         model.addAttribute("courses", courseList);
-        model.addAttribute("class", optClass);
+        model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "grade_entries");
     }
 
@@ -68,7 +68,7 @@ public class GenerallController {
         if(!optClass.isPresent()){
             return "404";
         }
-        model.addAttribute("class", optClass);
-        return Helper.checkLogin(teacherRepository, "calender_weekly_entries");
+        model.addAttribute("class", optClass.get());
+        return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
 }
