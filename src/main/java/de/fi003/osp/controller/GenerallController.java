@@ -1,5 +1,6 @@
 package de.fi003.osp.controller;
 
+import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -89,8 +90,12 @@ public class GenerallController {
     @GetMapping("/grade/{grade}")
     public String getCreateDatesPage(Model model, @PathVariable String grade){
         if(!grade.equals("null")){
-            //TODO get noten
+            Optional<Course> optCourse = courseRepository.findById(Integer.parseInt(grade));
+            model.addAttribute("cours", optCourse.get());
+            Optional<Teacher> optTeacher = teacherRepository.findById(optCourse.get().getTeacherId());
+            model.addAttribute("teacher", optTeacher.get());
         }
+
         return Helper.checkLogin(teacherRepository, "grade_create");
     }
 }
