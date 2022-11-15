@@ -9,7 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import de.fi003.osp.entity.Course;
+import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
+import de.fi003.osp.repository.CourseRepository;
 import de.fi003.osp.repository.TeacherRepository;
 import de.fi003.osp.utils.Helper;
 
@@ -23,6 +29,9 @@ public class GenerallController {
     @Autowired
     private TeacherRepository teacherRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
     @GetMapping("")
     public String main(Model model) {
         model.addAttribute("pageTitle"," - Application");
@@ -31,27 +40,30 @@ public class GenerallController {
 
     @GetMapping("/class")
     public String getClassOverview(Model model) {
-        model.addAttribute("pageTitle"," Klassenübersicht - Application");
+        model.addAttribute("pageTitle","Klassenübersicht - Application");
         ArrayList<de.fi003.osp.entity.Class> classList = classRepository.findAll();
-    
         model.addAttribute("list", classList);
         return Helper.checkLogin(teacherRepository, "class_select");
     }
 
     @GetMapping("/{className}/grades")
     public String getClassGrades(Model model, @PathVariable String className){
-        model.addAttribute("pageTitle"," Notenübersicht - Application");
+        model.addAttribute("pageTitle","Notenübersicht - Application");
         Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
         if(!optClass.isPresent()){
             return "404";
         }
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
+        ArrayList<Course> courseList = courseRepository.findAllByTeacherId(user.get().getId());
+        model.addAttribute("courses", courseList);
         model.addAttribute("class", optClass);
         return Helper.checkLogin(teacherRepository, "grade_entries");
     }
 
     @GetMapping("/{className}/weekly")
     public String getClassWekly(Model model, @PathVariable String className){
-        model.addAttribute("pageTitle"," Notenübersicht - Application");
+        model.addAttribute("pageTitle","Wochenübersicht - Application");
         Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
         if(!optClass.isPresent()){
             return "404";
