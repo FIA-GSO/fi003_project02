@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="components/header::header">
+</head>
+<body>
+    <div class="container">
+        <table 
+            id="gradeEntryTable"
+            class="table table-fixed table-condensed"
+            data-toggle="table"
+            data-pagination="true"
+            data-url=""
+            data-show-refresh="true"
+            data-show-toggle="true"
+            data-show-columns="true"
+            data-search="true"                          
+            data-show-pagination-switch="true"
+            data-id-field="class_id"
+            data-page-list="[10, 25, 50, 100, ALL]"
+            data-show-footer="false">
+            <thead>
+                <tr>
+                    <th data-field="class_id" data-checkbox="false" >#</th>
+                    <th data-field="class_name" data-formatter="">Klasse</th>
+                    <th data-field="class_teacher_id\teacher_name" data-formatter="">Klassenlehrer</th>
+                    <th data-field="course_name"  data-sortable="true">Fach</th>
+                    <th data-field="class_start_date"  data-sortable="true">Datum von</th>
+                    <th data-field="class_end_date"  data-sortable="true">Datum bis</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="clickableRow">
+                    <td class="col-xs-3">John</td>
+                    <td class="col-xs-3">43</td>
+                    <td class="col-xs-6">School Teacher</td>
+                    <td class="col-xs-6">$43,000</td>
+                    <td class="col-xs-6">$43,000</td>
+                </tr>
+                <tr class="clickableRow">
+                    <td class="col-xs-3">Tim</td>
+                    <td class="col-xs-3">52</td>
+                    <td class="col-xs-6">Plumber</td>
+                    <td class="col-xs-6">$55,000</td>
+                    <td class="col-xs-6">$55,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<section id="scripts" th:replace="components/scripts::scripts"></section>
+</html>
