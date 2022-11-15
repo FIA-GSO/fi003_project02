@@ -14,4 +14,10 @@ public class LoginController {
         model.addAttribute("pageTitle","Login - Application");
         return "login";
     }
+
+    @GetMapping("reset")
+    public String restPassword(Model model) {
+        model.addAttribute("pageTitle","Password vergessen - Application");
+        return "forget_password";
+    }
 }
