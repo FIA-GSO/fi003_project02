@@ -3,21 +3,21 @@
 <head th:replace="components/header::header">
 </head>
 <body>
-    <div id="containerClassSelect">
-        <h1 style="text-align: center;">Klassenübersicht</h1>
+    <div class="container">
+        <h1 style="text-align: center; margin-top: 2em;">Klassenübersicht</h1>
         <h2 style="text-align: center;">Bitte wählen Sie eine Klasse aus</h2>
-        <div class="row">
+        <div class="row" id="rowClass">
           <div class="col-sm" th:each="class : ${list}">
-            <a th:href="@{/class/{id}(id=${class})}">
-              <div class="card">
-                <div class="card-body">
-                    <h1 th:text="${class}"></h1>
+            <a th:href="@{/class/{id}(id=${class})}" style="text-decoration: none;">
+                <div class="card bg-light border" id="cardClass">
+                    <div class="card-body">
+                        <h1 th:text="${class}"></h1>
+                    </div>
                 </div>
-            </div>
             </a>
           </div>
         </div>
-      </div>
+    </div>
 </body>
 <section id="scripts" th:replace="components/scripts::scripts"></section>
 </html>
