@@ -73,16 +73,10 @@ public class GenerallController {
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
 
-    @GetMapping("/{className}/{grade}/create")
-    public String getCreateDatesPage(Model model, @PathVariable String className, @PathVariable String grade){
-        model.addAttribute("pageTitle","Eingabe Noten - Application");
-        Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
-        if(!optClass.isPresent()){
-            return "404";
-        }
-        model.addAttribute("class", optClass.get());
+    @GetMapping("/grade/{grade}")
+    public String getCreateDatesPage(Model model, @PathVariable String grade){
         if(!grade.equals("null")){
-            //TODO get noten 
+            //TODO get noten
         }
         return Helper.checkLogin(teacherRepository, "grade_create");
     }

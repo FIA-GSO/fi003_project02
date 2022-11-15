@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="cours : ${courses}">
-                    <td class="col-xs-3"><a style="text-decoration: none;" th:text="${cours.id}" th:href="@{/{id}/weekly(id=${class.name})}"></a></td>
+                    <td class="col-xs-3"><a style="text-decoration: none;" th:text="${cours.id}" th:href="@{/grade/{id}(id=${cours.id})}"></a></td>
                     <td class="col-xs-3" th:text="${class.name}"></td>
                     <td class="col-xs-6" th:text="${cours.teacherId}"></td>
                     <td class="col-xs-6" th:text="${cours.name}"></td>
