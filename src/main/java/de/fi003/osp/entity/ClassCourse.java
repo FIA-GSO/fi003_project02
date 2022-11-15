@@ -1,6 +1,13 @@
 package de.fi003.osp.entity;
 
+import javax.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
 public class ClassCourse {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int classId;
     private int courseId;
