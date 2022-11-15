@@ -10,4 +10,6 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     Optional<Course> findById(int id);
     ArrayList<Course> findAll();
+
+    ArrayList<Course> findAllByTeacherId(int id);
 }
