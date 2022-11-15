@@ -58,6 +58,7 @@ public class GenerallController {
         ArrayList<Course> courseList = courseRepository.findAllByTeacherId(user.get().getId());
         model.addAttribute("courses", courseList);
         model.addAttribute("class", optClass.get());
+        model.addAttribute("entries", "Einträge (" + courseList.size() + ")");
         return Helper.checkLogin(teacherRepository, "grade_entries");
     }
 
@@ -70,5 +71,19 @@ public class GenerallController {
         }
         model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
+    }
+
+    @GetMapping("/{className}/{grade}/create")
+    public String getCreateDatesPage(Model model, @PathVariable String className, @PathVariable String grade){
+        model.addAttribute("pageTitle","Eingabe Noten - Application");
+        Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
+        if(!optClass.isPresent()){
+            return "404";
+        }
+        model.addAttribute("class", optClass.get());
+        if(!grade.equals("null")){
+            //TODO get noten 
+        }
+        return Helper.checkLogin(teacherRepository, "grade_create");
     }
 }
