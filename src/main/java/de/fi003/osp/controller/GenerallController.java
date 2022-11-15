@@ -1,6 +1,7 @@
 package de.fi003.osp.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,19 @@ public class GenerallController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
         ArrayList<Course> courseList = courseRepository.findAllByTeacherId(user.get().getId());
-        model.addAttribute("courses", courseList);
+        
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        for (Course course : courseList) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("id", String.valueOf(course.getId()));
+            map.put("name", course.getName());
+            Optional<Teacher> optTeacher = teacherRepository.findById(course.getTeacherId());
+            map.put("teacherId", optTeacher.get().getName());
+            map.put("startDatetime", Helper.convertTime(course.getStartDatetime()));
+            map.put("endDatetime", Helper.convertTime(course.getEndDatetime()));
+            list.add(map);
+        }
+        model.addAttribute("courses", list);
         model.addAttribute("class", optClass.get());
         model.addAttribute("entries", "Einträge (" + courseList.size() + ")");
         return Helper.checkLogin(teacherRepository, "grade_entries");
