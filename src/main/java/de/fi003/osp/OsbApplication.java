@@ -9,5 +9,4 @@ public class OsbApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OsbApplication.class, args);
 	}
-
 }
