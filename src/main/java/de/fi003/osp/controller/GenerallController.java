@@ -2,6 +2,7 @@ package de.fi003.osp.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.ListIterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -86,13 +88,17 @@ public class GenerallController {
     }
 
     @GetMapping("/{className}/weekly")
-    public String getClassWekly(Model model, @PathVariable String className){
+    public String getClassWekly(Model model, @PathVariable String className, @RequestBody String timeFrame){
         model.addAttribute("pageTitle","Wochenübersicht - Application");
         Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
         if(!optClass.isPresent()){
             return "404";
         }
         ArrayList<Lesson> lessons = lessonRepository.findAll();
+        for (ListIterator<Lesson> iter = lessons.listIterator(); iter.hasNext(); ) {
+            Lesson element = iter.next();
+            
+        }
         model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
