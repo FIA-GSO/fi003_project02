@@ -41,6 +41,17 @@ public class GradeController {
             Optional<Teacher> optTeacher = teacherRepository.findById(optCourse.get().getTeacherId());
             model.addAttribute("teacher", optTeacher.get());
         }
+
         return Helper.checkLogin(teacherRepository, "grade_create");
+    }
+
+    @GetMapping("/create/{grade}")
+    public String createGrade(Model model,@PathVariable String grade){
+        model.addAttribute("pageTitle","Erstellen Übersicht - Application");
+        ArrayList<de.fi003.osp.entity.Class> classes = classRepository.findAll();
+        ArrayList<Teacher> teachers = teacherRepository.findAll();
+        model.addAttribute("classes", classes);
+        model.addAttribute("teachers", teachers);
+        return Helper.checkLogin(teacherRepository, "grade_entry");
     }
 }
