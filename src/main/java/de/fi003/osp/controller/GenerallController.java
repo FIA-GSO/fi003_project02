@@ -85,16 +85,4 @@ public class GenerallController {
         model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
-
-    @GetMapping("/grade/{grade}")
-    public String getCreateDatesPage(Model model, @PathVariable String grade){
-        if(!grade.equals("null")){
-            Optional<Course> optCourse = courseRepository.findById(Integer.parseInt(grade));
-            model.addAttribute("cours", optCourse.get());
-            Optional<Teacher> optTeacher = teacherRepository.findById(optCourse.get().getTeacherId());
-            model.addAttribute("teacher", optTeacher.get());
-        }
-
-        return Helper.checkLogin(teacherRepository, "grade_create");
-    }
 }
