@@ -9,6 +9,7 @@
             <a th:href="@{/{id}/weekly(id=${class.name})}" class="btn btn-primary" type="button">Wochenkalender</a>
         </div>
         <button class="btn btn-primary" type="button">Filter</button>
+        <a href="/grade/create" class="btn btn-primary" type="button">+</a>
         <h2 th:text="${entries}"></h2>
         <table 
             id="gradeEntryTable"

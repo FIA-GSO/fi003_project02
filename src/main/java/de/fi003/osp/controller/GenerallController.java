@@ -85,12 +85,4 @@ public class GenerallController {
         model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
-
-    @GetMapping("/grade/{grade}")
-    public String getCreateDatesPage(Model model, @PathVariable String grade){
-        if(!grade.equals("null")){
-            //TODO get noten
-        }
-        return Helper.checkLogin(teacherRepository, "grade_create");
-    }
 }

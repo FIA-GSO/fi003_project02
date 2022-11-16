@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="components/header::header">
+</head>
+<body>
+    <div id="containerLogin">
+        <div class="card position-absolute top-50 start-50 translate-middle" style="max-width: 600px; margin-top: 2em; min-width: 400px;">
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Benutzername" aria-label="Benutzername" aria-describedby="basic-addon1" id="inputUsername">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Passwort" aria-label="Passwort" id="inputPassword">
+                </div>
+                <div class="d-grid gap-2">
+                    <a class="btn btn-primary" id="loginBtn">Speichern</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<section id="scripts" th:replace="components/scripts::scripts"></section>
+<script src="/js/grade_entry.js"></script>
+</html>
