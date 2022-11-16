@@ -4,8 +4,8 @@ $(document).ready(function() {
         var classe = $( "#inputClass" ).val();
         var teacher = $( "#inputTeacher" ).val();
         var course = $("#inputCourse").val();
-        var startDate = $( "#inputStartDate" ).val();
-        var endDate = $("#inputEndDate").val();
+        var startDate = new Date($( "#inputStartDate" ).val());
+        var endDate = new Date($("#inputEndDate").val());
         var roomCode = $("#inputRoomCode").val();
         var description = $("#inputDescription").val();
         axios.post(host + '/grade/create', {
@@ -13,8 +13,8 @@ $(document).ready(function() {
             "courseId": course,
             "classId": classe,
             "roomCode": roomCode,
-            "startDatetime": startDate,
-            "endDatetime": endDate,
+            "startDatetime": startDate.getTime(),
+            "endDatetime": endDate.getTime(),
             "description": description
         })
         .then(function (response) {

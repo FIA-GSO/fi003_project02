@@ -11,7 +11,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Klasse</label>
                     </div>
-                    <select class="custom-select" id="inputClass">
+                    <select class="custom-select form-control" id="inputClass">
                       <option selected>Choose...</option>
                       <div th:each="class : ${classes}">
                         <option th:value="${class.id}" th:text="${class.name}">One</option>
@@ -22,7 +22,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Klassenlehrer</label>
                     </div>
-                    <select class="custom-select" id="inputTeacher">
+                    <select class="custom-select form-control" id="inputTeacher">
                       <option selected>Choose...</option>
                       <div th:each="teacher : ${teachers}">
                         <option th:value="${teacher.id}" th:text="${teacher.name}">One</option>
@@ -33,7 +33,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Fach</label>
                     </div>
-                    <select class="custom-select" id="inputCourse">
+                    <select class="custom-select form-control" id="inputCourse"> 
                       <option selected>Choose...</option>
                       <div th:each="cours : ${courses}">
                         <option th:value="${cours.id}" th:text="${cours.name}">One</option>
@@ -41,10 +41,14 @@
                     </select>
                   </div>
                   <div class="input-group mb-3">
-                    <input id="inputStartDate" type="datetime" class="form-control" placeholder="" aria-label="startDate" aria-describedby="basic-addon1">
+                    <input type="date" id="inputStartDate" name="trip-start" class="form-control"
+                        value="2018-07-22"
+                        min="2018-01-01" max="2018-12-31">
                   </div>
                   <div class="input-group mb-3">
-                    <input id="inputEndDate" type="datetime" class="form-control" placeholder="" aria-label="endDate" aria-describedby="basic-addon1">
+                    <input type="date" id="inputEndDate" name="trip-start" class="form-control"
+                        value="2018-07-22"
+                        min="2018-01-01" max="2018-12-31">
                   </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
