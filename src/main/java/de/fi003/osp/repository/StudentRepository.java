@@ -10,4 +10,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     Optional<Student> findById(int id);
     ArrayList<Student> findAll();
+    ArrayList<Student> findAllByClassId(int classId);
 }
