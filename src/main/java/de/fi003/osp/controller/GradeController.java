@@ -47,10 +47,16 @@ public class GradeController {
     @GetMapping("/{grade}")
     public String getCreateDatesPage(Model model, @PathVariable String grade){
         if(!grade.equals("null")){
-            Optional<Course> optCourse = courseRepository.findById(Integer.parseInt(grade));
+            Optional<Lesson> optLesson = lessonRepository.findById(Integer.parseInt(grade));
+            model.addAttribute("lesson", optLesson.get());
+            Optional<Course> optCourse = courseRepository.findById(optLesson.get().getCourseId());
             model.addAttribute("cours", optCourse.get());
-            Optional<Teacher> optTeacher = teacherRepository.findById(optCourse.get().getTeacherId());
+            Optional<de.fi003.osp.entity.Class> optClass = classRepository.findById(optLesson.get().getCourseId());
+            model.addAttribute("class", optClass.get());
+            Optional<Teacher> optTeacher = teacherRepository.findById(optLesson.get().getTeacherId());
             model.addAttribute("teacher", optTeacher.get());
+
+            model.addAttribute("date", Helper.convertTime(optLesson.get().getStartDatetime()) + " - " + Helper.convertTime(optLesson.get().getEndDatetime()));
         }
 
         return Helper.checkLogin(teacherRepository, "grade_create");
