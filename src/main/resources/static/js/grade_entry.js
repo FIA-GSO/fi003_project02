@@ -24,4 +24,8 @@ $(document).ready(function() {
             console.log(error);
         });
     }); 
+
+    $("#closeBtn").click(function(){
+        window.location.href = "/class";
+    });
 });
