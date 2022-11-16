@@ -10,7 +10,7 @@ $(document).ready(function() {
     for (let index = 0; index < elementList.length; index++) {
         const element = elementList[index];
         for (let index = 0; index < 28; index++) {
-            $(element).append('<input type="text" class="form-control" aria-label="Text input" id="inputField' + index + '">');
+            $(element).append('<input type="text" class="form-control gradeSingleInput" aria-label="Text input" id="inputField' + index + '">');
         }
     }
 });

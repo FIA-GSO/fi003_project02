@@ -5,20 +5,30 @@
 <body>
     <div id="loading">
         <img id="loading-image" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading..." />
-      </div>
-    <div class="container w-100 p-3" id="gradeCreateContainer">
+    </div>
+    <div class="container w-100" id="gradeCreateContainer">
         <div class="card bg-light border" id="cardGrade">
-            <div class="card-body" style="display: inherit;">
-                <h5>Fach: </h5>
-                <h5 th:text="${cours.name}"></h5>
-                <h5>Datum: </h5>
-                <h5 th:text="${date}"></h5>
-                <h5>Klasse: </h5>
-                <h5 th:text="${class.name}"></h5>
-                <h5>Klassenlehrer: </h5>
-                <h5 th:text="${teacher.name}"></h5>
+            <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5><strong>Fach: </strong></h5>
+                            <h5 th:text="${cours.name}"></h5>
+                        </div>
+                        <div class="col">
+                            <h5><strong>Datum: </strong></h5>
+                            <h5 th:text="${date}"></h5>
+                        </div>
+                        <div class="col">
+                            <h5><strong>Klasse: </strong></h5>
+                            <h5 th:text="${class.name}"></h5>
+                        </div>
+                        <div class="col">
+                            <h5><strong>Klassenlehrer: </strong></h5>
+                            <h5 th:text="${teacher.name}"></h5>
+                          </div>
+                    </div>                    
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="button" id="saveBtn">Speichern</button>
+                    <button class="btn btn-primary" type="button" id="saveBtn">Speichern</button>
                 </div>
             </div>
         </div>
@@ -44,15 +54,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><!--add for each functionality-->
+                <tr>
                     <td class="col-xs-3" th:text="${student.vorname}"></td>
                     <td class="col-xs-6" th:text="${student.name}"></td>
                 </tr>
-                <tr><!--add for each functionality-->
-                    <td class="col-xs-3">
+                <tr>
+                    <table class="table mb-0">
                         <div class="input-group mb-3" id="gradeInput">
+                            <input type="text" class="form-control gradeSingleInput">
                         </div>
-                    </td>
+                    </table>
                 </tr>
             </tbody>
         </table>

@@ -34,9 +34,13 @@
 #gradeCreateContainer {
     margin-left: 0em;
     margin-right: 0em;
+    display: inline-block;
+    padding: 50px;
+    white-space: nowrap;
 }
 
-#gradeInput {
-    width: 4em;
+.gradeSingleInput {
+    min-width: 3em;
+    max-width: 5em;
     /*width: 6em; with dropdown*/
 }
