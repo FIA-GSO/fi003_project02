@@ -17,9 +17,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import de.fi003.osp.entity.Course;
+import de.fi003.osp.entity.Lesson;
 import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
 import de.fi003.osp.repository.CourseRepository;
+import de.fi003.osp.repository.LessonRecordRepository;
+import de.fi003.osp.repository.LessonRepository;
 import de.fi003.osp.repository.TeacherRepository;
 import de.fi003.osp.utils.Helper;
 
@@ -35,6 +38,11 @@ public class GradeController {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private LessonRecordRepository lessonRecordRepository;
+
+    @Autowired LessonRepository lessonRepository;
 
     @GetMapping("/{grade}")
     public String getCreateDatesPage(Model model, @PathVariable String grade){
@@ -61,8 +69,8 @@ public class GradeController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Course> createCourse(@RequestBody Course course){
-        Course created = courseRepository.save(course);
+    public ResponseEntity<Lesson> createCourse(@RequestBody Lesson lesson){
+        Lesson created = lessonRepository.save(lesson);
         return ResponseEntity.ok(created);
     }
 }
