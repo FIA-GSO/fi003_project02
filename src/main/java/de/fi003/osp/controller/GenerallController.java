@@ -14,9 +14,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import de.fi003.osp.entity.Course;
+import de.fi003.osp.entity.Lesson;
 import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
 import de.fi003.osp.repository.CourseRepository;
+import de.fi003.osp.repository.LessonRecordRepository;
+import de.fi003.osp.repository.LessonRepository;
 import de.fi003.osp.repository.TeacherRepository;
 import de.fi003.osp.utils.Helper;
 
@@ -32,6 +35,11 @@ public class GenerallController {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private LessonRecordRepository lessonRecordRepository;
+
+    @Autowired LessonRepository lessonRepository;
 
     @GetMapping("")
     public String main(Model model) {
@@ -82,6 +90,7 @@ public class GenerallController {
         if(!optClass.isPresent()){
             return "404";
         }
+        ArrayList<Lesson> lessons = lessonRepository.findAll();
         model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
