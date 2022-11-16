@@ -50,8 +50,10 @@ public class GradeController {
         model.addAttribute("pageTitle","Erstellen Übersicht - Application");
         ArrayList<de.fi003.osp.entity.Class> classes = classRepository.findAll();
         ArrayList<Teacher> teachers = teacherRepository.findAll();
+        ArrayList<Course> courses = courseRepository.findAll();
         model.addAttribute("classes", classes);
         model.addAttribute("teachers", teachers);
+        model.addAttribute("courses", courses);
         return Helper.checkLogin(teacherRepository, "grade_entry");
     }
 }

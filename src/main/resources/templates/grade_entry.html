@@ -29,6 +29,26 @@
                       </div>
                     </select>
                   </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Fach</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                      <option selected>Choose...</option>
+                      <div th:each="cours : ${courses}">
+                        <option th:value="${cours.id}" th:text="${cours.name}">One</option>
+                      </div>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="datetime" class="form-control" placeholder="" aria-label="startDate" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="datetime" class="form-control" placeholder="" aria-label="endDate" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="d-grid gap-2">
+                    <a class="btn btn-primary" id="saveBtn">Login</a>
+                </div>
             </div>
         </div>
     </div>
