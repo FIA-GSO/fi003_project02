@@ -6,4 +6,8 @@ $(document).ready(function() {
         
         $('#loading').hide();
     }); 
+
+    for (let index = 0; index < 28; index++) {
+        $("#gradeInput").append('<input type="text" class="form-control" aria-label="Text input" id="inputField' + index + '">');
+    }
 });

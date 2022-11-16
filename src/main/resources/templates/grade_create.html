@@ -43,18 +43,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><!--add for each functionality-->
+                <tr th:each="student : ${students}"><!--add for each functionality-->
                     <tr><!--add for each functionality-->
-                        <td class="col-xs-3" th:text="Benny"></td>
-                        <td class="col-xs-6" th:text="Boi"></td>
+                        <td class="col-xs-3" th:text="${student.vorname}"></td>
+                        <td class="col-xs-6" th:text="${stundent.name}"></td>
                     </tr>
                     <tr><!--add for each functionality-->
                         <td class="col-xs-3">
                             <div class="input-group mb-3" id="gradeInput">
-                                <input type="text" class="form-control" aria-label="Text input" id="inputField1">
-                                <input type="text" class="form-control" aria-label="Text input" id="inputField1">
-                                <input type="text" class="form-control" aria-label="Text input" id="inputField1">
-                                <input type="text" class="form-control" aria-label="Text input" id="inputField1">
                             </div>
                         </td>
                     </tr>

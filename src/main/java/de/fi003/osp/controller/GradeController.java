@@ -18,11 +18,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import de.fi003.osp.entity.Course;
 import de.fi003.osp.entity.Lesson;
+import de.fi003.osp.entity.Student;
 import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
 import de.fi003.osp.repository.CourseRepository;
 import de.fi003.osp.repository.LessonRecordRepository;
 import de.fi003.osp.repository.LessonRepository;
+import de.fi003.osp.repository.StudentRepository;
 import de.fi003.osp.repository.TeacherRepository;
 import de.fi003.osp.utils.Helper;
 
@@ -42,7 +44,11 @@ public class GradeController {
     @Autowired
     private LessonRecordRepository lessonRecordRepository;
 
-    @Autowired LessonRepository lessonRepository;
+    @Autowired 
+    private LessonRepository lessonRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @GetMapping("/{grade}")
     public String getCreateDatesPage(Model model, @PathVariable String grade){
@@ -55,7 +61,8 @@ public class GradeController {
             model.addAttribute("class", optClass.get());
             Optional<Teacher> optTeacher = teacherRepository.findById(optLesson.get().getTeacherId());
             model.addAttribute("teacher", optTeacher.get());
-
+            ArrayList<Student> students = studentRepository.findAllByClassId(optLesson.get().getClassId());
+            model.addAttribute("students", students);
             model.addAttribute("date", Helper.convertTime(optLesson.get().getStartDatetime()) + " - " + Helper.convertTime(optLesson.get().getEndDatetime()));
         }
 
