@@ -64,7 +64,8 @@ public class GenerallController {
         }
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
-        ArrayList<Lesson> lessonList = lessonRepository.findAllByTeacherId(user.get().getId());
+
+        ArrayList<Lesson> lessonList = lessonRepository.findAllByClassId(optClass.get().getId());
         
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         for (Lesson lesson : lessonList) {
