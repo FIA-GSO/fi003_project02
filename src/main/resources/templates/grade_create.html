@@ -35,7 +35,8 @@
             data-show-pagination-switch="true"
             data-id-field="class_id"
             data-page-list="[10, 25, 50, 100, ALL]"
-            data-show-footer="false">
+            data-show-footer="false"
+            th:each="student : ${students}">
             <thead class="table-light">
                 <tr>
                     <th data-field="student_vorname" data-formatter="">Vorname</th>
@@ -43,17 +44,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="student : ${students}"><!--add for each functionality-->
-                    <tr><!--add for each functionality-->
-                        <td class="col-xs-3" th:text="${student.vorname}"></td>
-                        <td class="col-xs-6" th:text="${stundent.name}"></td>
-                    </tr>
-                    <tr><!--add for each functionality-->
-                        <td class="col-xs-3">
-                            <div class="input-group mb-3" id="gradeInput">
-                            </div>
-                        </td>
-                    </tr>
+                <tr><!--add for each functionality-->
+                    <td class="col-xs-3" th:text="${student.vorname}"></td>
+                    <td class="col-xs-6" th:text="${student.name}"></td>
+                </tr>
+                <tr><!--add for each functionality-->
+                    <td class="col-xs-3">
+                        <div class="input-group mb-3" id="gradeInput">
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
