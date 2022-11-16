@@ -1,5 +1,5 @@
 #gradeTable {
-    background-color: #ddd;
+    margin-top: 1em;
 }
 
 .tableGrades{
@@ -25,3 +25,17 @@
     left: 240px;
     z-index: 100;
   }
+
+  #cardGrade {
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+#gradeCreateContainer {
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+#gradeInput {
+    width: 6em;
+}

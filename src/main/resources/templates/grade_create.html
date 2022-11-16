@@ -6,7 +6,7 @@
     <div id="loading">
         <img id="loading-image" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading..." />
       </div>
-    <div class="container">
+    <div class="container w-100 p-3" id="gradeCreateContainer">
         <div class="card bg-light border" id="cardGrade">
             <div class="card-body" style="display: inherit;">
                 <h5>Fach: </h5>
@@ -15,16 +15,53 @@
                 <h5>Klasse: </h5>
                 <h5>Klassenlehrer: </h5>
                 <h5 th:text="${teacher.name}"></h5>
-                <button id="saveBtn" class="btn btn-primary" type="button">Speichern</button>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2" type="button" id="saveBtn">Speichern</button>
+                </div>
             </div>
         </div>
-        <table class="tableGrades">
-            <tr>
-                <th>Name Name</th>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
+        <table 
+            id="gradeTable"
+            class="table table-fixed table-condensed"
+            data-toggle="table"
+            data-pagination="true"
+            data-url=""
+            data-show-refresh="true"
+            data-show-toggle="true"
+            data-show-columns="true"
+            data-search="true"                          
+            data-show-pagination-switch="true"
+            data-id-field="class_id"
+            data-page-list="[10, 25, 50, 100, ALL]"
+            data-show-footer="false">
+            <thead class="table-light">
+                <tr>
+                    <th data-field="student_vorname" data-formatter="">Vorname</th>
+                    <th data-field="student_name" data-formatter="">Nachname</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><!--add for each functionality-->
+                    <tr><!--add for each functionality-->
+                        <td class="col-xs-3" th:text="Benny"></td>
+                        <td class="col-xs-6" th:text="Boi"></td>
+                    </tr>
+                    <tr><!--add for each functionality-->
+                        <td class="col-xs-3">
+                            <div class="input-group mb-3" id="gradeInput">
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                  <li><a class="dropdown-item" href="#">1-6</a></li>
+                                  <li><a class="dropdown-item" href="#">1-15</a></li>
+                                  <li><a class="dropdown-item" href="#">0%-100%</a></li>
+                                </ul>
+                              </div>
+                              
+                        </td>
+                    </tr>
+                </tr>
+            </tbody>
         </table>
     </div>
 </body>
