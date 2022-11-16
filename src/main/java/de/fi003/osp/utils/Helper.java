@@ -23,7 +23,7 @@ public class Helper {
 
     public static String convertTime(long time){
         Date date = new Date(time);
-        Format format = new SimpleDateFormat("yyyy MM dd");
+        Format format = new SimpleDateFormat("yyyy.MM.dd");
         return format.format(date);
     }
 }
