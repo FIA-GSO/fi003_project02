@@ -1,6 +1,7 @@
 package de.fi003.osp.controller;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +91,17 @@ public class GradeController {
         if(!lessonRecords.isEmpty()){
             System.out.println(lessonRecords);
             ArrayList<LessonRecord> old = lessonRecordRepository.findAll();
-            //lessonRecordRepository.deleteAll(old);
+            for (LessonRecord record : lessonRecords) {
+                for (ListIterator<LessonRecord> iter = old.listIterator(); iter.hasNext(); ) {
+                    LessonRecord element = iter.next();
+                    if(element.getTeacherId() == record.getTeacherId() 
+                    && element.getStudentId() == record.getStudentId()
+                    && element.getLessonId() == record.getLessonId()){
+                        lessonRecordRepository.delete(element);
+                        iter.remove();
+                    }
+                }
+            }
             lessonRecordRepository.saveAll(lessonRecords);
         }
         return ResponseEntity.ok("ok");
