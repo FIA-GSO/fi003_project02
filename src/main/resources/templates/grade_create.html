@@ -21,6 +21,9 @@
                         <div class="col">
                             <h5><strong>Klasse: </strong></h5>
                             <h5 th:text="${class.name}"></h5>
+                            <h5 id="lessonId" style="display: none;" th:text="${lesson.id}"></h5>
+                            <h5 id="teacherId" style="display: none;" th:text="${teacher.id}"></h5>
+                            <h5 id="classId" style="display: none;" th:text="${class.id}"></h5>
                         </div>
                         <div class="col">
                             <h5><strong>Klassenlehrer: </strong></h5>
@@ -62,6 +65,7 @@
                         <dl>
                             <dt th:text="${student.vorname}"></dt>
                             <dt th:text="${student.name}"></dt>
+                            <dt id="studentId" th:text="${student.id}" style="display: none;"></dt>
                         </dl>
                     </td>
                 </tr>

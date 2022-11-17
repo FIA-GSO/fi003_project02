@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import de.fi003.osp.entity.Course;
 import de.fi003.osp.entity.Lesson;
+import de.fi003.osp.entity.LessonRecord;
 import de.fi003.osp.entity.Student;
 import de.fi003.osp.entity.Teacher;
 import de.fi003.osp.repository.ClassRepository;
@@ -82,5 +83,22 @@ public class GradeController {
     public ResponseEntity<Lesson> createCourse(@RequestBody Lesson lesson){
         Lesson created = lessonRepository.save(lesson);
         return ResponseEntity.ok(created);
+    }
+
+    @PostMapping("/records/{lesson}/{student}")
+    public ResponseEntity<String> createRecord(@PathVariable String lesson, @PathVariable String student, @RequestBody ArrayList<LessonRecord> lessonRecords){
+        if(!lessonRecords.isEmpty()){
+            System.out.println(lessonRecords);
+            ArrayList<LessonRecord> old = lessonRecordRepository.findAllByTeacherIdAndStundetIdAndLessonId(lessonRecords.get(0).getTeacherId(), Integer.parseInt(student), Integer.parseInt(lesson));
+            lessonRecordRepository.deleteAll(old);
+            lessonRecordRepository.saveAll(lessonRecords);
+        }
+        return ResponseEntity.ok("ok");
+    }
+
+    @GetMapping("/records/{lesson}/{student}")
+    public ResponseEntity<ArrayList<LessonRecord>> getRecords(@PathVariable String lesson,@PathVariable String student){
+        ArrayList<LessonRecord> records = new ArrayList<>();
+        return ResponseEntity.ok(records);
     }
 }
