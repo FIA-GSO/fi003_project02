@@ -9,23 +9,18 @@
     <div class="container-fluid" id="calendarCreateContainer">
         <div class="card bg-light border" id="cardCalendar">
             <div class="card-body">
-                    <div class="row justify-content-between">
-                        <div class="col">
-                            <button class="btn btn-primary" type="button">&#5130</button> 
+                    <div class="row">
+                        <div class="input-group mb-3" id="calendarDateFrom">
+                            <p><strong>Datum der Woche von: </strong></p>
+                            <input type="text" class="form-control" style="margin-left: 2em; min-width: 10em; max-width: 15em;">
                         </div>
-                        <div class="col">
-                            <h2 th:text="Montag"></h2><!--${firsWeekDay}-->
+                    </div>
+                    <div class="row">
+                        <div class="input-group mb-3" id="calendarDateUntil">
+                            <p><strong>Datum der Woche bis: </strong></p>
+                            <input type="text" class="form-control" style="margin-left: 2em; min-width: 10em; max-width: 15em;">
                         </div>
-                        <div class="col">
-                            <h2>-</h2>
-                        </div>
-                        <div class="col">
-                            <h2 th:text="Freitag"></h2><!--${lastWeekDay}-->
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-primary" type="button">&#5125</button>
-                        </div>
-                    </div>                    
+                    </div>          
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button class="btn btn-primary" type="button" id="saveBtn">Speichern</button>
                 </div>
