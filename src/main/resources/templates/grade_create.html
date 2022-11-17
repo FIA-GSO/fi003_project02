@@ -48,6 +48,7 @@
             data-show-pagination-switch="true"
             data-id-field="class_id"
             data-page-list="[10, 25, 50, 100, ALL]"
+            data-show-header="false"
             data-show-footer="false"
             th:each="student : ${students}">
             <!--thead class="table-light">
@@ -59,15 +60,16 @@
             <tbody>
                 <tr>
                     <td rowspan="2">
-                        <img src="???.jpg">
-                        <!--div class="col-md-8 mx-auto">
+                        <img th:id="'student' + ${student.id}" src="${student.photo}" width="100" height="150" 
+                            th:onclick="studentPhotoClick([[${student.id}]] ,[[ ${student.photo}]])">
+                        <div th:id="'photoUpload' + ${student.id}" class="col-md-8 mx-auto" style="display:none">
                             <form method="post" th:action="@{/image/upload}" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <input type="file" name="image" accept="image/*" class="form-control-file">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Upload image</button>
                             </form>
-                        </div-->
+                        </div>
                     </td>
                     <td>
                         <dl>
