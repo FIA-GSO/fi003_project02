@@ -10,6 +10,4 @@ public interface LessonRecordRepository extends JpaRepository<LessonRecord, Inte
 
     Optional<LessonRecord> findById(int id);
     ArrayList<LessonRecord> findAll();
-
-    ArrayList<LessonRecord> findAllByTeacherIdAndStundetIdAndLessonId(int teacherId, int studentId, int lessonId);
 }

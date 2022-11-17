@@ -89,8 +89,8 @@ public class GradeController {
     public ResponseEntity<String> createRecord(@PathVariable String lesson, @PathVariable String student, @RequestBody ArrayList<LessonRecord> lessonRecords){
         if(!lessonRecords.isEmpty()){
             System.out.println(lessonRecords);
-            ArrayList<LessonRecord> old = lessonRecordRepository.findAllByTeacherIdAndStundetIdAndLessonId(lessonRecords.get(0).getTeacherId(), Integer.parseInt(student), Integer.parseInt(lesson));
-            lessonRecordRepository.deleteAll(old);
+            ArrayList<LessonRecord> old = lessonRecordRepository.findAll();
+            //lessonRecordRepository.deleteAll(old);
             lessonRecordRepository.saveAll(lessonRecords);
         }
         return ResponseEntity.ok("ok");
