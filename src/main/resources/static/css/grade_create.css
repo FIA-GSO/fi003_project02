@@ -17,26 +17,25 @@
     opacity: 0.7;
     background-color: #fff;
     z-index: 99;
-  }
+}
   
-  #loading-image {
+#loading-image {
     position: absolute;
     top: 100px;
     left: 240px;
     z-index: 100;
-  }
+}
 
-  #cardGrade {
+#cardGrade {
     margin-left: 0em;
     margin-right: 0em;
 }
 
 #gradeCreateContainer {
-    margin-left: 0em;
-    margin-right: 0em;
     display: inline-block;
     padding: 50px;
     white-space: nowrap;
+    width: auto;
 }
 
 .gradeSingleInput {
