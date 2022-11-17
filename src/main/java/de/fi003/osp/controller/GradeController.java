@@ -81,8 +81,8 @@ public class GradeController {
         return Helper.checkLogin(teacherRepository, "grade_entry");
     }
 
-    @GetMapping("/weekly/create")
-    public String createWeeklyGrade(Model model){
+    @GetMapping("/weekly/create/{id}")
+    public String createWeeklyGrade(Model model, @PathVariable int id){
         model.addAttribute("pageTitle","Erstellen Wochenübersicht - Application");
         return "calendar_weekly_create";
     }
