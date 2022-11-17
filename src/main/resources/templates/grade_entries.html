@@ -4,12 +4,13 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="text-align: left; margin-top: 2em;">Notenübersicht</h1>
+        <a href="/class" class="btn btn-secondary" type="button" style="margin-top: 2em;">< Zurück</a>
+        <h1 style="text-align: left; margin-top: 1em;">Notenübersicht</h1>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a th:href="@{/{id}/weekly(id=${class.name})}" class="btn btn-primary" type="button">Wochenkalender</a>
         </div>
-        <a href="/class" class="btn btn-primary" type="button">Back</a>
-        <a href="/grade/create/null" class="btn btn-primary" type="button">+</a>
+        
+        
         <h2 th:text="${entries}"></h2>
         <table 
             id="gradeEntryTable"
@@ -27,7 +28,7 @@
             data-show-footer="false">
             <thead>
                 <tr>
-                    <th data-field="class_id" data-checkbox="false" >#</th>
+                    <th><a href="/grade/create/null" class="btn btn-primary" type="button">+</a></th>
                     <th data-field="class_name" data-formatter="">Klasse</th>
                     <th data-field="class_teacher_id\teacher_name" data-formatter="">Klassenlehrer</th>
                     <th data-field="course_name"  data-sortable="true">Fach</th>
