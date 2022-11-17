@@ -8,35 +8,34 @@
         <img id="loading-image" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading..." />
     </div>
     -->
-    <div class="container-fluid" id="gradeCreateContainer">
-        <div class="card bg-light border" id="cardGrade">
+    <div class="container-fluid" id="calendarCreateContainer">
+        <div class="card bg-light border" id="cardCalendar">
             <div class="card-body">
                     <div class="row justify-content-between">
                         <div class="col">
-                            <h5><strong>Fach: </strong></h5>
-                            <h5></h5>
+                            <button class="btn btn-primary" type="button">&#5130</button> 
                         </div>
                         <div class="col">
-                            <h5><strong>Datum: </strong></h5>
-                            <h5></h5>
+                            <h2 th:text="Montag"></h2><!--${firsWeekDay}-->
                         </div>
                         <div class="col">
-                            <h5><strong>Klasse: </strong></h5>
-                            <h5></h5>
+                            <h2>-</h2>
                         </div>
                         <div class="col">
-                            <h5><strong>Klassenlehrer: </strong></h5>
-                            <h5></h5>
-                          </div>
+                            <h2 th:text="Freitag"></h2><!--${lastWeekDay}-->
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" type="button">&#5125</button>
+                        </div>
                     </div>                    
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button class="btn btn-primary" type="button" id="saveBtn">Speichern</button>
                 </div>
             </div>
         </div>
+        <!--Table Montag-->
         <table 
-            id="gradeTable"
-            class="table table-fixed table-condensed"
+            class="table"
             data-toggle="table"
             data-pagination="true"
             data-url=""
@@ -49,29 +48,70 @@
             data-page-list="[10, 25, 50, 100, ALL]"
             data-show-footer="false">
             <!--th:each="student : ${students}"-->
-            <tbody>
+            <thead class="table-light">
                 <tr>
-                    <td rowspan="2">
-                        <div class="image"></div>
+                    <div class="card text-center text-bg-secondary">
+                        <div class="card-header">
+                          <strong>Montag</strong>
+                        </div>
+                      </div>
+                </tr>
+                <tr>
+                    <th scope="col">Stunde</th>
+                    <th scope="col">Klasse</th>
+                    <th scope="col">Fach</th>
+                    <th scope="col">Raum</th>
+                    <th scope="col">Zeit von</th>
+                    <th scope="col">Zeit bis</th>            
+                </tr>
+            </thead>
+            <tbody>
+                <!--lesson 1-->
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <div class="input-group mb-3" id="calendarInputClass1">
+                            <input type="text" class="form-control">
+                        </div>
                     </td>
                     <td>
-                        <dl>
-                            <dt></dt>
-                            <dt></dt>
-                        </dl>
+                        <div class="input-group mb-3" id="calendarInputCourse1">
+                            <input type="text" class="form-control">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3" id="calendarInputRoom1">
+                            <input type="text" class="form-control">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3" id="calendarInputTimeFrom1">
+                            <input type="text" class="form-control">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3" id="calendarInputTimeUntil1">
+                            <input type="text" class="form-control">
+                        </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <table class="table mb-0">
-                            <div class="input-group mb-3" id="gradeInput">
-                                <input type="text" class="form-control gradeSingleInput">
-                            </div>
-                        </table>
-                    </td>
+                    <table id="weeklyTable">
+                        <thead class="table-light">
+                            <tr><strong>Notizen</strong></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <div class="input-group mb-3" id="calendarInputNotes1">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
                 </tr>
             </tbody>
         </table>
+        
     </div>
 </body>
 <section id="scripts" th:replace="components/scripts::scripts"></section>
