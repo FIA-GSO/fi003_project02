@@ -1,6 +1,5 @@
 package de.fi003.osp.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import de.fi003.osp.entity.Image;
 
 @Controller
@@ -25,8 +23,9 @@ import de.fi003.osp.entity.Image;
 public class ImageController {
 
     @GetMapping("/{image}")
-    public String main(@PathVariable String image) {
-        return "login";
+    public ResponseEntity<MultipartFile> main(@PathVariable String image) {
+        return null;
+        
     }
 
     @PostMapping("/upload")
