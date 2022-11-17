@@ -3,11 +3,9 @@
 <head th:replace="components/header::header">
 </head>
 <body>
-    <!--implement loading function
-        <div id="loading">
+    <div id="loading">
         <img id="loading-image" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading..." />
     </div>
-    -->
     <div class="container-fluid" id="calendarCreateContainer">
         <div class="card bg-light border" id="cardCalendar">
             <div class="card-body">
@@ -68,7 +66,7 @@
             <tbody>
                 <!--lesson 1-->
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row" id="numLesson">1</th>
                     <td>
                         <div class="input-group mb-3" id="calendarInputClass1">
                             <input type="text" class="form-control">
