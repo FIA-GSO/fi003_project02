@@ -83,7 +83,7 @@ public class GenerallController {
     }
 
     @GetMapping("/{className}/weekly")
-    public String getClassWekly(Model model, @PathVariable String className, @RequestBody String timeFrame){
+    public String getClassWekly(Model model, @PathVariable String className, String timeFrame){
         model.addAttribute("pageTitle","Wochenübersicht - Application");
         Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
         if(!optClass.isPresent()){
