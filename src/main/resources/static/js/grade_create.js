@@ -21,7 +21,8 @@ $(document).ready(function() {
                         'lessonId' : lessonId,
                         'note' : value,
                         'studentId' : student_id,
-                        'teacherId' : teacherId
+                        'teacherId' : teacherId,
+                        'pos': index
                     }
                     valueList.push(obj)
                 }
@@ -40,8 +41,20 @@ $(document).ready(function() {
     var elementList = $('[id=gradeInput]');
     for (let index = 0; index < elementList.length; index++) {
         const element = elementList[index];
-        for (let index = 0; index < 28; index++) {
-            $(element).append('<input type="text" class="form-control gradeSingleInput" style="width: 3em;" aria-label="Text input" id="inputField' + index + '">');
+        for (let i = 0; i < 28; i++) {
+            $(element).append('<input type="text" class="form-control gradeSingleInput" style="width: 3em;" aria-label="Text input" id="inputField' + i + '">');
         }
+        var lessonId = $("#lessonId").text();
+        axios.get('/grade/records/' + lessonId + '/' + (index + 1))
+        .then(function (response) {
+            var list = response.data
+            for (let d = 0; d < list.length; d++) {
+                const el = list[d];
+                $("[id=inputField" + el.pos + "]:eq(" + index + ")").val(el.note)
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 });

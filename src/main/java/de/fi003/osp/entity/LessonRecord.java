@@ -14,6 +14,7 @@ public class LessonRecord {
     private int lessonId;
     private int note;
     private String description;
+    private int pos;
 
 
     public int getId(){
@@ -55,4 +56,10 @@ public class LessonRecord {
         this.description = description;
     }
 
+    public int getPos(){
+        return this.pos;
+    }
+    public void setPos(int pos){
+        this.pos = pos;
+    } 
 }

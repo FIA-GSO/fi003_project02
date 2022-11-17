@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import de.fi003.osp.entity.Class;
 import de.fi003.osp.entity.Course;
 import de.fi003.osp.entity.Lesson;
 import de.fi003.osp.entity.LessonRecord;
@@ -80,7 +81,7 @@ public class GradeController {
         return Helper.checkLogin(teacherRepository, "grade_entry");
     }
 
-    @GetMapping("/grade/weekly/create")
+    @GetMapping("/weekly/create")
     public String createWeeklyGrade(Model model){
         model.addAttribute("pageTitle","Erstellen Wochenübersicht - Application");
         return "calendar_weekly_create";
@@ -115,7 +116,25 @@ public class GradeController {
 
     @GetMapping("/records/{lesson}/{student}")
     public ResponseEntity<ArrayList<LessonRecord>> getRecords(@PathVariable String lesson,@PathVariable String student){
-        ArrayList<LessonRecord> records = new ArrayList<>();
-        return ResponseEntity.ok(records);
+        ArrayList<LessonRecord> all = lessonRecordRepository.findAll();
+        Optional<Lesson> optLessen = lessonRepository.findById(Integer.parseInt(lesson));
+        Optional<Teacher> optTeacher = teacherRepository.findById(optLessen.get().getTeacherId());
+        Optional<Student> optStudent = studentRepository.findById(Integer.parseInt(student));
+        for (ListIterator<LessonRecord> iter = all.listIterator(); iter.hasNext(); ) {
+            LessonRecord element = iter.next();
+            if(element.getLessonId() != optLessen.get().getId()){
+                iter.remove();
+                continue;
+            }
+            if(element.getStudentId() != optStudent.get().getId()){
+                iter.remove();
+                continue;
+            }
+            if(element.getTeacherId() != optTeacher.get().getId()){
+                iter.remove();
+                continue;
+            }
+        }
+        return ResponseEntity.ok(all);
     }
 }
