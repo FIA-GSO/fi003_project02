@@ -16,6 +16,7 @@ $(document).ready(function() {
         }
     }
     //gradeList.forEach()
-    //for (let index = 0; index < elementList.length; index++) {}
-
+    for (let index = 0; index < elementList.length; index++) {
+        const element = elementList[index];
+    }
 });
