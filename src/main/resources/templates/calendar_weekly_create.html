@@ -12,22 +12,19 @@
                     <div class="row justify-content-between">
                         <div class="col">
                             <h5><strong>Fach: </strong></h5>
-                            <h5 th:text="${cours.name}"></h5>
+                            <h5></h5>
                         </div>
                         <div class="col">
                             <h5><strong>Datum: </strong></h5>
-                            <h5 th:text="${date}"></h5>
+                            <h5></h5>
                         </div>
                         <div class="col">
                             <h5><strong>Klasse: </strong></h5>
-                            <h5 th:text="${class.name}"></h5>
-                            <h5 id="lessonId" style="display: none;" th:text="${lesson.id}"></h5>
-                            <h5 id="teacherId" style="display: none;" th:text="${teacher.id}"></h5>
-                            <h5 id="classId" style="display: none;" th:text="${class.id}"></h5>
+                            <h5></h5>
                         </div>
                         <div class="col">
                             <h5><strong>Klassenlehrer: </strong></h5>
-                            <h5 th:text="${teacher.name}"></h5>
+                            <h5></h5>
                           </div>
                     </div>                    
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -48,32 +45,17 @@
             data-show-pagination-switch="true"
             data-id-field="class_id"
             data-page-list="[10, 25, 50, 100, ALL]"
-            data-show-footer="false"
-            th:each="student : ${students}">
-            <!--thead class="table-light">
-                <tr>
-                    <th data-field="student_vorname" data-formatter="">Vorname</th>
-                    <th data-field="student_name" data-formatter="">Nachname</th>
-                </tr>
-            </thead-->
+            data-show-footer="false">
+            <!--th:each="student : ${students}"-->
             <tbody>
                 <tr>
                     <td rowspan="2">
-                        <img src="???.jpg">
-                        <!--div class="col-md-8 mx-auto">
-                            <form method="post" th:action="@{/image/upload}" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <input type="file" name="image" accept="image/*" class="form-control-file">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Upload image</button>
-                            </form>
-                        </div-->
+                        <div class="image"></div>
                     </td>
                     <td>
                         <dl>
-                            <dt th:text="${student.vorname}"></dt>
-                            <dt th:text="${student.name}"></dt>
-                            <dt id="studentId" th:text="${student.id}" style="display: none;"></dt>
+                            <dt></dt>
+                            <dt></dt>
                         </dl>
                     </td>
                 </tr>
