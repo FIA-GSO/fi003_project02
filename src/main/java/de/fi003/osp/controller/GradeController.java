@@ -80,6 +80,12 @@ public class GradeController {
         return Helper.checkLogin(teacherRepository, "grade_entry");
     }
 
+    @GetMapping("/grade/weekly/create")
+    public String createWeeklyGrade(Model model){
+        model.addAttribute("pageTitle","Erstellen Wochenübersicht - Application");
+        return "calendar_weekly_create";
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Lesson> createCourse(@RequestBody Lesson lesson){
         Lesson created = lessonRepository.save(lesson);
