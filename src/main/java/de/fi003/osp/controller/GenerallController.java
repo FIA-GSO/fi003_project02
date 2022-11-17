@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import de.fi003.osp.entity.Course;
 import de.fi003.osp.entity.Lesson;
@@ -64,9 +62,6 @@ public class GenerallController {
         if(!optClass.isPresent()){
             return "404";
         }
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
-
         ArrayList<Lesson> lessonList = lessonRepository.findAllByClassId(optClass.get().getId());
         
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
