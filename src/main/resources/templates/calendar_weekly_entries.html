@@ -49,15 +49,8 @@
                         </tr>
                     -->
 
-                    <tr>
-                        <td class="col-xs-6">FI003</td>
-                        <td class="col-xs-6">FEN</td>
-                        <td class="col-xs-6">C008</td>
-                        <td class="col-xs-6">08:45</td>
-                        <td class="col-xs-6">10:35</td>
-                        <td class="col-xs-6">45</td>
-                    </tr>
-                    <tr>
+                    <tr th:each="lesson : ${lessons}">
+                        <td class="col-xs-3"><a style="text-decoration: none;" th:text="${lesson.id}" th:href="@{/lesson/{id}(id=${lesson.id})}"></a></td>
                         <td class="col-xs-6">FI003</td>
                         <td class="col-xs-6">FEN</td>
                         <td class="col-xs-6">C008</td>
