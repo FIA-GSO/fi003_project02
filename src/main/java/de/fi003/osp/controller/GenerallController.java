@@ -83,7 +83,7 @@ public class GenerallController {
     }
 
     @GetMapping("/{className}/weekly")
-    public String getClassWekly(Model model, @PathVariable String className, String timeFrame){
+    public String getClassWekly(Model model, @PathVariable String className){
         model.addAttribute("pageTitle","Wochenübersicht - Application");
         Optional<de.fi003.osp.entity.Class> optClass = classRepository.findByName(className);
         if(!optClass.isPresent()){
@@ -92,8 +92,25 @@ public class GenerallController {
         ArrayList<Lesson> lessons = lessonRepository.findAll();
         for (ListIterator<Lesson> iter = lessons.listIterator(); iter.hasNext(); ) {
             Lesson element = iter.next();
-            
+            if(element.getClassId() != optClass.get().getId()){
+                iter.remove();
+                continue;
+            }
         }
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        for (Lesson lesson : lessons) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("id", String.valueOf(lesson.getId()));
+            map.put("class", optClass.get().getName());
+            Optional<Course> optCourse = courseRepository.findById(lesson.getCourseId());
+            map.put("course", optCourse.get().getName());
+            map.put("room", lesson.getRoomCode());
+            map.put("startTime", Helper.convertTime(lesson.getStartDatetime()));
+            map.put("endTime", Helper.convertTime(lesson.getEndDatetime()));
+            map.put("kw", "42");
+            list.add(map);
+        }
+        model.addAttribute("lessons", list);
         model.addAttribute("class", optClass.get());
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
