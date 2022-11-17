@@ -14,6 +14,7 @@ public class Student {
     private String email;
     private int classId;
     private long birthDate;
+    private String photo;
 
     public int getId(){
         return this.id;
@@ -52,5 +53,13 @@ public class Student {
     }
     public void setBirthDate(long birthDate){
         this.birthDate = birthDate;
+    }
+
+    public String getPhoto(){
+        return this.photo;
+    }
+
+    public void setPhoto(String photo){
+        this.photo = photo;
     }
 }
