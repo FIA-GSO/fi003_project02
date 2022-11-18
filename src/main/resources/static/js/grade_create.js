@@ -63,6 +63,6 @@ $(document).ready(function() {
 function studentPhotoClick(studentId, studentPhoto) {
     if (studentPhoto === null){
         document.getElementById( "student" + studentId ).style.display = "none";
-        document.getElementById( "photoUpload" + studentId ).style.display = "block";
+        document.getElementById( "photoUpload" + studentId ).style.display = "inline";
     }
 }
