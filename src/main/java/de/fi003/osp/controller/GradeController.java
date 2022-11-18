@@ -1,11 +1,14 @@
 package de.fi003.osp.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -88,7 +91,16 @@ public class GradeController {
         ArrayList<Class> classes = classRepository.findAll();
         model.addAttribute("courses", courses);
         model.addAttribute("classes", classes);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<Teacher> user = teacherRepository.findUserByEmail(auth.getName());
+        model.addAttribute("teacher", user.get());
         return "calendar_weekly_create";
+    }
+
+    @PostMapping("/weekly/create")
+    public ResponseEntity<List<Lesson>> createLessons(@RequestBody ArrayList<Lesson> lessons){
+        List<Lesson> saved = lessonRepository.saveAll(lessons);
+        return ResponseEntity.ok(saved);
     }
 
     @PostMapping("/create")

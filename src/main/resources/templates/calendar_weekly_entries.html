@@ -33,8 +33,6 @@
                         <!--Button creates a new entry-->
                         <th><a href="/grade/create/null" class="btn btn-success" type="button">+</a></th>
                         <th data-field="class_name">Klasse</th>
-                        <th data-field="course_name">Fach</th>
-                        <th data-field="raum">Raum</th>
                         <th data-field="lesson_start_time">Zeit von</th>
                         <th data-field="lesson_end_time">Zeit bis</th>
                         <th data-field="kw">KW</th>
@@ -45,8 +43,6 @@
                         <!--Lesson id navigates to selected entry on click-->
                         <td class="col-xs-3"><a style="text-decoration: none;" th:text="${lesson.id}" th:href="@{/grade/weekly/create/{id}(id=${lesson.id})}"></a></td>
                         <td class="col-xs-6" th:text="${lesson.class}"></td>
-                        <td class="col-xs-6" th:text="${lesson.course}"></td>
-                        <td class="col-xs-6" th:text="${lesson.room}"></td>
                         <td class="col-xs-6" th:text="${lesson.startTime}"></td>
                         <td class="col-xs-6" th:text="${lesson.endTime}"></td>
                         <td class="col-xs-6" th:text="${lesson.kw}"></td>

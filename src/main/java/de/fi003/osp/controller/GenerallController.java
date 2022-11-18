@@ -89,29 +89,20 @@ public class GenerallController {
         if(!optClass.isPresent()){
             return "404";
         }
-        ArrayList<Lesson> lessons = lessonRepository.findAll();
-        for (ListIterator<Lesson> iter = lessons.listIterator(); iter.hasNext(); ) {
-            Lesson element = iter.next();
-            if(element.getClassId() != optClass.get().getId()){
-                iter.remove();
-                continue;
-            }
-        }
+        ArrayList<de.fi003.osp.entity.Class> classes = classRepository.findAll();
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
-        for (Lesson lesson : lessons) {
+        for (de.fi003.osp.entity.Class class1 : classes) {
             HashMap<String, String> map = new HashMap<>();
-            map.put("id", String.valueOf(lesson.getId()));
-            map.put("class", optClass.get().getName());
-            Optional<Course> optCourse = courseRepository.findById(lesson.getCourseId());
-            map.put("course", optCourse.get().getName());
-            map.put("room", lesson.getRoomCode());
-            map.put("startTime", Helper.convertTime(lesson.getStartDatetime()));
-            map.put("endTime", Helper.convertTime(lesson.getEndDatetime()));
+            map.put("id", String.valueOf(class1.getId()));
+            map.put("class", class1.getName());
+            map.put("startTime", Helper.convertTime(class1.getStartDate()));
+            map.put("endTime", Helper.convertTime(class1.getEndDate()));
             map.put("kw", "42");
             list.add(map);
         }
         model.addAttribute("lessons", list);
         model.addAttribute("class", optClass.get());
+        model.addAttribute("entries", "Einträge (" + list.size() + ")");
         return Helper.checkLogin(teacherRepository, "calendar_weekly_entries");
     }
 }

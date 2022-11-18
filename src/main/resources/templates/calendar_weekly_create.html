@@ -32,6 +32,7 @@
                 </div>
             </div>
         </div>
+        <h2 th:text="${entries}"></h2>
         <!--Table for each day of the week, Monday - Sunday-->
         <div id="tableArea">
         </div>
@@ -53,6 +54,7 @@
               </div>
             </select>
           </div>
+          <p style="display: none;" id="teacherId" th:text="${teacher.id}"></p>
     </div>
 </body>
 <section id="scripts" th:replace="components/scripts::scripts"></section>
