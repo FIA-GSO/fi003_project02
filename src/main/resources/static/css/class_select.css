@@ -10,3 +10,9 @@
 #cardClass {
     margin-top: 2em;
 }
+.classHeader {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 10px;
+    border-color: #dddbdb;
+}
