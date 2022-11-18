@@ -7,15 +7,17 @@
         <h1 style="text-align: center; margin-top: 2em;">Klassenübersicht</h1>
         <h2 style="text-align: center;">Bitte wählen Sie eine Klasse aus</h2>
         <div class="row" id="rowClass">
-          <div class="col-sm" th:each="class : ${list}">
-            <a th:href="@{/{id}/grades(id=${class.name})}" style="text-decoration: none;">
-                <div class="card bg-light border" id="cardClass">
-                    <div class="card-body">
-                        <h1 th:text="${class.name}"></h1>
+            <!--Lists all classes available to user-->
+            <div class="col-sm" th:each="class : ${list}">
+                <!--Tile navigates to all entries made related to grading-->
+                <a th:href="@{/{id}/grades(id=${class.name})}" style="text-decoration: none;">
+                    <div class="card bg-light border" id="cardClass">
+                        <div class="card-body">
+                            <h1 th:text="${class.name}"></h1>
+                        </div>
                     </div>
-                </div>
-            </a>
-          </div>
+                </a>
+            </div>
         </div>
     </div>
 </body>

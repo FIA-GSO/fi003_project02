@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#saveBtn").click(function(){
         $('#loading').show();
-        //sammeln zeilen die sich verändert haben
+        //collects data from cells that changed
         var classId = $("#classId").text();
         var teacherId = $("#teacherId").text();
         var lessonId = $("#lessonId").text();
@@ -38,6 +38,7 @@ $(document).ready(function() {
         }
         $('#loading').hide();
     }); 
+    //Creates 28 input fields in a row, each with custom id for each element with id 'gradeInput'
     var elementList = $('[id=gradeInput]');
     for (let index = 0; index < elementList.length; index++) {
         const element = elementList[index];

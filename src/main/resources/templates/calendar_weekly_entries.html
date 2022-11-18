@@ -4,13 +4,16 @@
 </head>
 <body>
     <div class="container">
+        <!--Button navigates back to overview of classes-->
         <a href="/class" class="btn btn-secondary" type="button" style="margin-top: 2em;">< Zurück</a>
         <h1 style="text-align: left; margin-top: 1em;">Wochenkalender</h1>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <!--Button navigates to overview of all entries made related to grading-->
             <a th:href="@{/{id}/weekly(id=${class.name})}" class="btn btn-success" type="button">Notenübersicht</a>
         </div>
         
         <h2 th:text="${entries}"></h2>
+        <!--Table displaying all entries made related to the weekly calendar-->
         <table 
             id="weeklyEntryTable"
             class="table table-fixed table-condensed"
@@ -27,6 +30,7 @@
             data-show-footer="false"><!--th:each="day : ${day}"-->
                 <thead>
                     <tr>
+                        <!--Button creates a new entry-->
                         <th><a href="/grade/create/null" class="btn btn-success" type="button">+</a></th>
                         <th data-field="class_name">Klasse</th>
                         <th data-field="course_name">Fach</th>
@@ -38,6 +42,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="lesson : ${lessons}">
+                        <!--Lesson id navigates to selected entry on click-->
                         <td class="col-xs-3"><a style="text-decoration: none;" th:text="${lesson.id}" th:href="@{/grade/weekly/create/{id}(id=${lesson.id})}"></a></td>
                         <td class="col-xs-6" th:text="${lesson.class}"></td>
                         <td class="col-xs-6" th:text="${lesson.course}"></td>

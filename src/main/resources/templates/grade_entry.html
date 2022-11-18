@@ -11,6 +11,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Klasse</label>
                     </div>
+                    <!--Select option of available classes to user-->
                     <select class="custom-select form-control" id="inputClass">
                       <option selected>Choose...</option>
                       <div th:each="class : ${classes}">
@@ -22,6 +23,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Klassenlehrer</label>
                     </div>
+                    <!--Select option of teacher currently tied to user account-->
                     <select class="custom-select form-control" id="inputTeacher">
                       <option selected>Choose...</option>
                       <div th:each="teacher : ${teachers}">
@@ -33,6 +35,7 @@
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="inputGroupSelect01">Fach</label>
                     </div>
+                    <!--Select option of available courses to user-->
                     <select class="custom-select form-control" id="inputCourse"> 
                       <option selected>Choose...</option>
                       <div th:each="cours : ${courses}">
@@ -41,11 +44,13 @@
                     </select>
                   </div>
                   <div class="input-group mb-3">
+                    <!--User input of start date of entry with fixed date range-->
                     <input type="datetime-local" id="inputStartDate" name="trip-start" class="form-control"
                         value="2018-07-22"
                         min="2018-01-01" max="2018-12-31">
                   </div>
                   <div class="input-group mb-3">
+                    <!--User input of end date of entry with fixed date range-->
                     <input type="datetime-local" id="inputEndDate" name="trip-start" class="form-control"
                         value="2018-07-22"
                         min="2018-01-01" max="2018-12-31">
@@ -54,16 +59,20 @@
                   <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Raum</label>
                   </div>
-                  <input id="inputRoomCode" type="text" class="form-control" placeholder="" aria-label="endDate" aria-describedby="basic-addon1">
+                  <!--User input of room where lesson takes place-->
+                  <input id="inputRoomCode" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
+                    <!--User input of description to be added, optional-->
                     <label class="input-group-text" for="inputGroupSelect01">Beschreibung</label>
                   </div>
-                  <input id="inputDescription" type="text" class="form-control" placeholder="" aria-label="endDate" aria-describedby="basic-addon1">
+                  <input id="inputDescription" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
                 </div>
                 <div class="d-grid gap-2">
+                  <!--Navigates user to create a new grade entry with input data-->
                   <a class="btn btn-primary" id="saveBtn">Speichern</a>
+                  <!--Disregards input data-->
                   <a class="btn btn-primary" id="closeBtn">Abbruch</a>
                 </div>
             </div>

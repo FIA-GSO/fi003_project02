@@ -5,16 +5,21 @@
 <body>
     <div id="containerLogin">
         <div class="card position-absolute top-50 start-50 translate-middle" style="max-width: 600px; margin-top: 2em; min-width: 400px;">
+            <!--Displays image of gso koeln school logo-->
             <img src="https://www.gso-koeln.de/wp-content/uploads/2020/06/cropped-LOGO-GSO_neu.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="input-group mb-3">
+                    <!--User input of username-->
                     <input type="text" class="form-control" placeholder="Benutzername" aria-label="Benutzername" aria-describedby="basic-addon1" id="inputUsername">
                 </div>
                 <div class="input-group mb-3">
+                    <!--User input of password, input hidden as circle per char-->
                     <input type="password" class="form-control" placeholder="Passwort" aria-label="Passwort" id="inputPassword">
                 </div>
                 <div class="d-grid gap-2">
+                    <!--Navigates user to information about a passwort reset-->
                     <a href="/login/reset" class="card-link">Passwort vergessen?</a><br><br>
+                    <!--Navigates authenticated user to overview of all classes available to user-->
                     <a class="btn btn-primary" id="loginBtn">Login</a>
                 </div>
             </div>

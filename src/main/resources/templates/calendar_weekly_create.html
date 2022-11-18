@@ -3,30 +3,36 @@
 <head th:replace="components/header::header">
 </head>
 <body>
+    <!--Image only appears when page is being loaded-->
     <div id="loading">
         <img id="loading-image" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading..." />
     </div>
     <div class="container-fluid" id="calendarCreateContainer">
         <div class="card bg-light border" id="cardCalendar">
             <div class="card-body">
-                    <div class="row">
-                        <div class="input-group mb-3" id="calendarDateFrom">
-                            <p><strong>Datum der Woche von: </strong></p>
-                            <input type="text" class="form-control" style="margin-left: 2em; min-width: 10em; max-width: 15em;">
-                        </div>
+                <!--Button navigates back to overview of classes-->
+                <a href="/class" class="btn btn-secondary" type="button" style="margin-bottom: 2em;">< Zurück</a>
+                <div class="row">
+                    <!--Input field to enter date of first date of chosen week-->
+                    <div class="input-group mb-3">
+                        <p><strong>Datum der Woche von: </strong></p>
+                        <input type="text" id="calendarDateFrom" class="form-control" style="margin-left: 2em; min-width: 10em; max-width: 15em;">
                     </div>
+                </div>
                     <div class="row">
-                        <div class="input-group mb-3" id="calendarDateUntil">
+                        <!--Input field to enter date of first date of chosen week-->
+                        <div class="input-group mb-3">
                             <p><strong>Datum der Woche bis: </strong></p>
-                            <input type="text" class="form-control" style="margin-left: 2em; min-width: 10em; max-width: 15em;">
+                            <input type="text" id="calendarDateUntil" class="form-control" style="margin-left: 2em; min-width: 10em; max-width: 15em;">
                         </div>
                     </div>          
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <!--Button saves data entered or changed in input fields-->
                     <button class="btn btn-primary" type="button" id="saveBtn">Speichern</button>
                 </div>
             </div>
         </div>
-        <!--Table Montag-->
+        <!--Table for each day of the week, Monday - Sunday-->
         <table 
             class="table"
             data-toggle="table"
