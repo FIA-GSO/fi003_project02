@@ -69,9 +69,12 @@
                         <div th:id="'photoUpload' + ${student.id}" class="col-md-8 mx-auto" style="display:none">
                             <form method="post" th:action="@{/image/upload}" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <input type="file" name="image" accept="image/*" class="form-control-file">
+                                    <label class="btn label">
+                                        <input th:id="'input' + ${student.id}" type="file" name="image" accept="image/*" class="form-control-file">
+                                        <span>Select</span>
+                                    </label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Upload image</button>
+                                <button type="submit" class="btn btn-primary" style="width: 100px;">Upload</button>
                             </form>
                         </div>
                     </td>
