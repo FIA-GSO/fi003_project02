@@ -41,15 +41,15 @@ $(document).ready(function() {
         var list = []
         for (let index = 1; index <= 5; index++) {
             for (let i = 1; i <= 12; i++) {
-                var note = $("#day" + index + " #calendarInputNotes" + i).val()
-                var classV = $("#day" + index + " #entryTable" + i +" #calendarInputClass1 input").val()
-                var cours = $("#day" + index + " #entryTable" + i +" #calendarInputCourse1 input").val()
+                var note = $("#day" + index + " #entryTable" + i +" #calendarInputNotes1 #exampleFormControlTextarea1").val()
+                var classV = $("#day" + index + " #entryTable" + i +" #calendarInputClass1 select").val()
+                var cours = $("#day" + index + " #entryTable" + i +" #calendarInputCourse1 select").val()
                 var room = $("#day" + index + " #entryTable" + i +" #calendarInputRoom1 input").val()
                 var startTime = $("#day" + index + " #entryTable" + i +" #calendarInputTimeFrom1 input").val()
                 var endTime = $("#day" + index + " #entryTable" + i +" #calendarInputTimeUntil1 input").val()
                 if(note != "" && classV != "" && cours != "" && room != "" && startTime != "" && endTime != ""){
                     var obj = {
-                        'teacherId' : '',
+                        'teacherId' : $("#teacherId").text(),
                         'courseId' : cours,
                         'classId' : classV,
                         'roomCode' : room,
@@ -57,9 +57,18 @@ $(document).ready(function() {
                         'endDatetime': endTime,
                         'description': note
                     }
+                    list.push(obj)
                 }
             }
         }
+        console.log(list)
+        axios.post('/grade/weekly/create', list)
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
         $('#loading').hide();
     }); 
 });
