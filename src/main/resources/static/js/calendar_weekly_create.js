@@ -29,8 +29,6 @@ $(document).ready(function() {
             var coursSelect = $("#courseContainer").html()
             var selectClass = "#day" + index + " #entryTable" + i +" #calendarInputClass1"
             var selectCours = "#day" + index + " #entryTable" + i +" #calendarInputCourse1"
-            console.log(selectClass)
-            console.log( $(selectClass))
             $(selectClass + " input").remove()
             $(selectClass).append(classSelect)
             $(selectCours + " input").remove()
