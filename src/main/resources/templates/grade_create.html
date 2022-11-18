@@ -55,6 +55,7 @@
             data-show-header="false"
             data-show-footer="false"
             th:each="student : ${students}">
+            <!-- For photo import-->
             <!--thead class="table-light">
                 <tr>
                     <th data-field="student_vorname" data-formatter="">Vorname</th>
@@ -63,7 +64,8 @@
             </thead-->
             <tbody>
                 <tr>
-                    <td rowspan="2">
+                    <!-- For photo import-->
+                    <!--td rowspan="2">
                         <img th:id="'student' + ${student.id}" src="${student.photo}" width="100" height="150" 
                             th:onclick="studentPhotoClick([[${student.id}]] ,[[ ${student.photo}]])">
                         <div th:id="'photoUpload' + ${student.id}" class="col-md-8 mx-auto" style="display:none">
@@ -77,13 +79,15 @@
                                 <button type="submit" class="btn btn-primary" style="width: 100px;">Upload</button>
                             </form>
                         </div>
-                    </td>
+                    </td-->
                     <td>
-                        <dl>
+                        <h5 th:text="${student.vorname} + ' ' + ${student.name}"></h5>
+                        <!-- For photo import-->
+                        <!--dl>
                             <dt th:text="${student.vorname}"></dt>
                             <dt th:text="${student.name}"></dt>
                             <dt id="studentId" th:text="${student.id}" style="display: none;"></dt>
-                        </dl>
+                        </dl-->
                     </td>
                 </tr>
                 <tr>
