@@ -35,8 +35,24 @@
         <!--Table for each day of the week, Monday - Sunday-->
         <div id="tableArea">
         </div>
-        
-        
+        <div id="classContainer" style="display: none;">
+            <!--Select option of available classes to user-->
+            <select class="custom-select form-control" id="classSelect">
+              <option selected>Choose...</option>
+              <div th:each="class : ${classes}">
+                <option th:value="${class.id}" th:text="${class.name}">One</option>
+              </div>
+            </select>
+          </div>
+        <div id="courseContainer" style="display: none;">
+            <!--Select option of available classes to user-->
+            <select class="custom-select form-control" id="courseSelect">
+              <option selected>Choose...</option>
+              <div th:each="cours : ${courses}">
+                <option th:value="${cours.id}" th:text="${cours.name}">One</option>
+              </div>
+            </select>
+          </div>
     </div>
 </body>
 <section id="scripts" th:replace="components/scripts::scripts"></section>

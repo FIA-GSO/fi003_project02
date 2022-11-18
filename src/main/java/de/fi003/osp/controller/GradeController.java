@@ -84,6 +84,10 @@ public class GradeController {
     @GetMapping("/weekly/create/{id}")
     public String createWeeklyGrade(Model model, @PathVariable int id){
         model.addAttribute("pageTitle","Erstellen Wochenübersicht - Application");
+        ArrayList<Course> courses = courseRepository.findAll();
+        ArrayList<Class> classes = classRepository.findAll();
+        model.addAttribute("courses", courses);
+        model.addAttribute("classes", classes);
         return "calendar_weekly_create";
     }
 
