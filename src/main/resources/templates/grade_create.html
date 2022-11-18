@@ -81,10 +81,11 @@
                         </div>
                     </td-->
                     <td>
+                        <h4 id="studentId" th:text="${student.id}" style="display: none;"></h4>
                         <h5 th:text="${student.vorname} + ' ' + ${student.name}"></h5>
                         <!-- For photo import-->
                         <!--dl>
-                            <dt th:text="${student.vorname}"></dt>
+                            <dt th:text="${student.vorname}"></dt>fix
                             <dt th:text="${student.name}"></dt>
                             <dt id="studentId" th:text="${student.id}" style="display: none;"></dt>
                         </dl-->
